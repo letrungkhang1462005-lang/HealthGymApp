@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#F5F5F5"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="THÔNG TIN HỒ SƠ CÁ NHÂN"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1A3E30"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Họ và tên -->
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ và tên"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Tuổi -->
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tuổi (VD: 21)"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Giới tính -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giới tính:"
+            android:textStyle="bold"
+            android:textColor="#1A3E30"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- Đã sửa ID khớp btnMale -->
+            <LinearLayout
+                android:id="@+id/btnMale"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_gender_selected"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="6dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nam"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Đã sửa ID khớp btnFemale -->
+            <LinearLayout
+                android:id="@+id/btnFemale"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_gender_unselected"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginStart="6dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nữ"
+                    android:textColor="#1A3E30"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Chiều cao -->
+        <EditText
+            android:id="@+id/etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chiều cao (cm - VD: 170)"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Cân nặng -->
+        <EditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cân nặng (kg - VD: 65)"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Hệ số vận động (Đã sửa ID thành spinnerActivityLevel) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mức độ vận động (Activity Level):"
+            android:textStyle="bold"
+            android:textColor="#1A3E30"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerActivityLevel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Mục tiêu tập luyện -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mục tiêu tập luyện:"
+            android:textStyle="bold"
+            android:textColor="#1A3E30"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerGoal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Nút Lưu (Đã sửa ID thành btnSave) -->
+        <LinearLayout
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_gender_selected"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LƯU &amp; TÍNH TOÁN CHỈ SỐ"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B2B20">
+
+    <!-- PHẦN NỘI DUNG CUỘN Ở TRÊN -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigation"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <!-- HEADER CÓ NỀN ẢNH MỜ img_gym2 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
+
+                <!-- Ảnh nền mờ img_gym2 -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_gym2"
+                    android:alpha="0.2"
+                    android:contentDescription="Gym Background" />
+
+                <!-- Nội dung Header (Avatar, Tên, Cài đặt) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="24dp"
+                    android:paddingTop="24dp">
+
+                    <ImageView
+                        android:id="@+id/imgUserAvatar"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/img_changtrai"
+                        android:background="@drawable/bg_card_profile"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Avatar"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:id="@+id/tvWelcomeName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Xin chào, Lê Trung Khang 👋"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cùng nhau tiến gần hơn đến mục tiêu của bạn!"
+                            android:textColor="#A0B2A6"
+                            android:textSize="12sp"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnHeaderSettings"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_manage"
+                        app:tint="#FFFFFF"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Settings"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- KHUNG NỘI DUNG CHÍNH (THỐNG KÊ & CHỈ SỐ) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_profile"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginHorizontal="16dp"
+                android:elevation="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng quan sức khỏe"
+                    android:textColor="#1A3E30"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvDashboardDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hôm nay, 13/10/2026"
+                    android:textColor="#7A9187"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Hàng 3 thẻ chỉ số (Nhịp tim, Calories, Nước) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="24dp">
+
+                    <!-- Thẻ Nhịp tim -->
+                    <LinearLayout
+                        android:id="@+id/cardHeartRate"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="6dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="❤️ 72"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nhịp tim (bpm)"
+                            android:textColor="#7A9187"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Thẻ Calories -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="3dp">
+                        <TextView
+                            android:id="@+id/tvDashboardCalories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔥 0"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Calories (đã đốt)"
+                            android:textColor="#7A9187"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Thẻ Nước -->
+                    <LinearLayout
+                        android:id="@+id/cardWater"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💧 2.1"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nước (lít)"
+                            android:textColor="#7A9187"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiêu đề Chỉ số cơ thể -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chỉ số cơ thể"
+                    android:textColor="#1A3E30"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Hàng 3 thẻ chỉ số cơ thể -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="6dp">
+                        <TextView
+                            android:id="@+id/tvDashboardWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="67.0 kg"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="15sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cân nặng"
+                            android:textColor="#7A9187"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Thẻ BMI -->
+                    <LinearLayout
+                        android:id="@+id/cardBmi"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="3dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <TextView
+                            android:id="@+id/tvDashboardBmi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="23.7"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="15sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BMI"
+                            android:textColor="#7A9187"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp">
+                        <TextView
+                            android:id="@+id/tvDashboardFat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="14.8 %"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="15sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tỷ lệ mỡ"
+                            android:textColor="#7A9187"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- GỢI Ý CHẾ ĐỘ ĂN UỐNG (Đã chèn ảnh mờ img_monan bên dưới) -->
+                <FrameLayout
+                    android:id="@+id/layoutMealSuggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="76dp"
+                    android:background="@drawable/bg_gender_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:clipToOutline="true"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Ảnh mờ món ăn ở lớp nền -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_monan"
+                        android:scaleType="centerCrop"
+                        android:alpha="0.25"
+                        android:contentDescription="Meal Background" />
+
+                    <!-- Lớp nội dung chữ & icon đè lên trên -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@android:drawable/ic_menu_sort_by_size"
+                            app:tint="#FFFFFF"
+                            android:contentDescription="Meal Suggestion"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="14dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gợi ý chế độ ăn uống"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:textSize="15sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dựa trên mục tiêu và chỉ số của bạn"
+                                android:textColor="#D1E8DF"
+                                android:textSize="12sp"
+                                android:layout_marginTop="2dp"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="➔"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- THEO DÕI VẬN ĐỘNG: BẢN ĐỒ + ĐẾM BƯỚC -->
+                <LinearLayout
+                    android:id="@+id/layoutTracking"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="24dp">
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="🗺️"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:background="@drawable/bg_stat_item"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="14dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bản đồ &amp; đếm bước chân"
+                            android:textColor="#1A3E30"
+                            android:textStyle="bold"
+                            android:textSize="15sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Đo quãng đường đi bộ, chạy bộ bằng GPS"
+                            android:textColor="#7A9187"
+                            android:textSize="12sp"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="➔"
+                        android:textColor="#059669"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Hoạt động hôm nay -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoạt động hôm nay"
+                    android:textColor="#1A3E30"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Danh sách hoạt động hôm nay: được nạp từ Room (bảng workout_log) -->
+                <LinearLayout
+                    android:id="@+id/layoutTodayActivities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:id="@+id/tvNoActivityToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hôm nay bạn chưa chọn hoạt động nào."
+                    android:textColor="#7A9187"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Xem thêm các bài tập gợi ý -->
+                <TextView
+                    android:id="@+id/tvMoreExercises"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn thêm bài tập gợi ý (Chạy bộ, Boxing, Bơi...) ➔"
+                    android:textColor="#D96B27"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- THANH ĐIỀU HƯỚNG DƯỚI ĐÁY -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp">
+
+        <LinearLayout
+            android:id="@+id/menuHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👁️"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trang chủ"
+                android:textColor="#1A3E30"
+                android:textSize="11sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menuHistory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🕒"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lịch sử"
+                android:textColor="#7A9187"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menuAiCoach"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🤖"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI Coach"
+                android:textColor="#7A9187"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menuSettings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚙️"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cài đặt"
+                android:textColor="#7A9187"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

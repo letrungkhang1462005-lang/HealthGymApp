@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 1. Lớp nền vòng tròn nhạt phía dưới -->
+    <item>
+        <shape android:shape="ring"
+            android:innerRadiusRatio="2.3"
+            android:thickness="14dp"
+            android:useLevel="false">
+            <solid android:color="#B3E5FC"/>
+        </shape>
+    </item>
+
+    <!-- 2. Lớp tiến độ xanh đậm chạy phía trên (Cùng innerRadiusRatio và thickness để trùng khít kích thước) -->
+    <item>
+        <shape android:shape="ring"
+            android:innerRadiusRatio="2.3"
+            android:thickness="14dp"
+            android:useLevel="true">
+            <solid android:color="#0088CC"/>
+        </shape>
+    </item>
+
+</layer-list>

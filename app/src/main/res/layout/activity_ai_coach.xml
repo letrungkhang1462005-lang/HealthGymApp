@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8FAFB">
+
+    <!-- Header (code tự thêm padding trên để không bị thanh trạng thái đè) -->
+    <LinearLayout
+        android:id="@+id/headerBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:background="#0B2B20"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤖 AI Coach (Gemini)"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Khung cuộn hiển thị nội dung chat -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:fillViewport="true">
+        <TextView
+            android:id="@+id/tvChatResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Xin chào Lê Trung Khang! Tôi là huấn luyện viên AI của bạn. Bạn muốn tôi tư vấn lịch tập hay chế độ dinh dưỡng nào hôm nay?\n\n📷 Bấm nút máy ảnh để gửi ảnh món ăn, mình sẽ ước tính calories và đánh giá chất béo."
+            android:textColor="#1A3E30"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4dp"/>
+    </ScrollView>
+
+    <!-- Ảnh đính kèm (ẩn cho tới khi chọn ảnh) -->
+    <LinearLayout
+        android:id="@+id/layoutPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:padding="8dp"
+        android:visibility="gone">
+        <ImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Ảnh món ăn đính kèm"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="Ảnh món ăn đã đính kèm"
+            android:textColor="#1A3E30"/>
+        <Button
+            android:id="@+id/btnRemoveImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✕"
+            style="?android:attr/borderlessButtonStyle"/>
+    </LinearLayout>
+
+    <!-- Thanh nhập tin nhắn (tự cao lên khi gõ nhiều dòng) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="70dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="8dp">
+
+        <Button
+            android:id="@+id/btnAttach"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:minWidth="0dp"
+            android:padding="0dp"
+            android:text="📷"
+            android:textSize="20sp"
+            android:backgroundTint="#E3EAE6"/>
+
+        <EditText
+            android:id="@+id/edtUserMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Nhập câu hỏi cho AI Coach..."
+            android:textColorHint="#BDC6C1"
+            android:textColor="#1A3E30"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:imeOptions="actionSend"
+            android:maxLines="4"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#0B2B20"
+            android:text="Gửi"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>

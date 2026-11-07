@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B2B20">
+
+    <!-- Header Trên cùng (code tự thêm khoảng đệm phía trên để không bị thanh trạng thái che) -->
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="〈"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Chế độ ăn uống"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="32dp"/>
+    </LinearLayout>
+
+    <!-- Khung nội dung bo tròn trắng bên dưới -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutHeader"
+        android:background="@drawable/bg_card_white"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Tiêu đề Mục tiêu -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mục tiêu của bạn"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Card Mục tiêu -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_stat_item"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@android:drawable/ic_menu_compass"
+                    android:background="#0B2B20"
+                    android:padding="10dp"
+                    android:layout_marginEnd="14dp"
+                    android:tint="#FFFFFF"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvGoalTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cutting / Tăng cơ"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvGoalCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Calo mục tiêu: -- kcal/ngày"
+                        android:textColor="#4B5563"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Thanh lọc: Hôm nay, 7 ngày, Tùy chỉnh -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#F3F4F6"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/btnTabToday"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_green_banner"
+                    android:gravity="center"
+                    android:text="Hôm nay"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <TextView
+                    android:id="@+id/btnTab7Days"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="7 ngày"
+                    android:textColor="#6B7280"
+                    android:textSize="13sp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <TextView
+                    android:id="@+id/btnTabCustom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tùy chỉnh"
+                    android:textColor="#6B7280"
+                    android:textSize="13sp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+
+            <!-- Chọn ngày (chỉ hiện ở tab 7 ngày, code tự tạo các nút ngày) -->
+            <HorizontalScrollView
+                android:id="@+id/scrollDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:visibility="gone"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:id="@+id/layoutDayChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
+            </HorizontalScrollView>
+
+            <!-- Tiêu đề Thực đơn gợi ý -->
+            <TextView
+                android:id="@+id/tvMenuHeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thực đơn gợi ý cho Hôm nay"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+
+            <!-- Tổng calo của ngày so với mục tiêu -->
+            <TextView
+                android:id="@+id/tvDaySummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#059669"
+                android:textSize="12sp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Trạng thái: đang tạo thực đơn / báo lỗi -->
+            <LinearLayout
+                android:id="@+id/layoutLoading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:layout_marginBottom="12dp">
+
+                <ProgressBar
+                    android:id="@+id/progressMenu"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+                <TextView
+                    android:id="@+id/tvMenuStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#059669"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- Danh sách 4 bữa ăn -->
+            <LinearLayout
+                android:id="@+id/layoutMeals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- BỮA SÁNG -->
+                <LinearLayout
+                    android:id="@+id/cardBreakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_stat_item"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bữa sáng"
+                            android:textStyle="bold"
+                            android:textColor="#111827"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" (07:00 - 08:00)"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvBreakfastMeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:id="@+id/tvBreakfastNutri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#059669"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <!-- BỮA TRƯA -->
+                <LinearLayout
+                    android:id="@+id/cardLunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_stat_item"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bữa trưa"
+                            android:textStyle="bold"
+                            android:textColor="#111827"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" (11:30 - 12:30)"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvLunchMeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:id="@+id/tvLunchNutri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#059669"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <!-- BỮA PHỤ -->
+                <LinearLayout
+                    android:id="@+id/cardSnack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_stat_item"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bữa phụ"
+                            android:textStyle="bold"
+                            android:textColor="#111827"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" (15:30 - 16:00)"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvSnackMeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:id="@+id/tvSnackNutri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#059669"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <!-- BỮA TỐI -->
+                <LinearLayout
+                    android:id="@+id/cardDinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_stat_item"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="20dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bữa tối"
+                            android:textStyle="bold"
+                            android:textColor="#111827"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" (18:30 - 19:30)"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvDinnerMeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textColor="#374151"
+                        android:textSize="13sp"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:id="@+id/tvDinnerNutri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#059669"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Nút Tạo thực đơn khác -->
+            <Button
+                android:id="@+id/btnGenerateOtherMenu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Tạo thực đơn khác"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:backgroundTint="#035D38"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thực đơn do AI gợi ý, chỉ mang tính tham khảo. Nếu bạn có bệnh lý hoặc dị ứng thực phẩm, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng."
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:layout_marginBottom="30dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

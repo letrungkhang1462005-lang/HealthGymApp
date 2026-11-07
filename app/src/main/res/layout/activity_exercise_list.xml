@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B2B20">
+
+    <TextView
+        android:id="@+id/tvExerciseTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="8dp"
+        android:text="Gợi ý bài tập &amp; Calories"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvExerciseHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvExerciseTitle"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="8dp"
+        android:text="Chạm để chọn bài tập bạn đã/sẽ tập hôm nay"
+        android:textColor="#A7C4B8"
+        android:textSize="13sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnSaveExercises"
+        android:layout_below="@id/tvExerciseHint"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp">
+
+        <LinearLayout
+            android:id="@+id/layoutExerciseList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="8dp" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/btnSaveExercises"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="12dp"
+        android:background="@drawable/bg_gender_selected"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="Xác nhận"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+</RelativeLayout>

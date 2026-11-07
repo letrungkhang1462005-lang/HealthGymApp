@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF"> <!-- Hiệu ứng khi bấm -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#1E965D"
+                android:endColor="#2DC179"
+                android:angle="0"/>
+            <corners android:radius="28dp" /> <!-- Bo góc nhiều -->
+        </shape>
+    </item>
+</ripple>

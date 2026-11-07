@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBF5FB"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- TIÊU ĐỀ HÀNG ĐẦU -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💧"
+            android:textSize="28sp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NHẮC NHỜ UỐNG NƯỚC"
+            android:textColor="#0088CC"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- KHUNG TÍNH MỤC TIÊU NƯỚC (Ô CÂN NẶNG + NÚT TÍNH) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_profile"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:elevation="2dp"
+        android:layout_marginBottom="24dp">
+
+        <!-- Ô nhập/hiển thị Cân nặng -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Cân nặng (kg)"
+            android:layout_marginEnd="12dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxStrokeColor="#5B2C6F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etWeightWater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="65"
+                android:textColor="#1A3E30"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Nút Tính mục tiêu -->
+        <Button
+            android:id="@+id/btnCalculateTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:text="Tính mục tiêu"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="#0088CC"
+            app:cornerRadius="12dp"/>
+    </LinearLayout>
+
+    <!-- VÒNG TRÒN TIẾN ĐỘ UỐNG NƯỚC -->
+    <RelativeLayout
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp">
+
+        <!-- Vòng tròn tiến độ chạy vòng cung -->
+        <ProgressBar
+            android:id="@+id/progressBarWater"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:rotation="-90"
+            android:progressDrawable="@drawable/progress_circle_layer"/>
+
+        <!-- Dòng chữ tiến độ bên trong vòng tròn -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTargetWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 2275 ml"
+                android:textColor="#005580"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvPercentWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textColor="#0088CC"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- NÚT BẤM THÊM NƯỚC -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Thêm lượng nước vừa uống:"
+        android:textColor="#555555"
+        android:textSize="14sp"
+        android:layout_marginBottom="12dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <!-- Nút +200ml (Cốc nhỏ) -->
+        <Button
+            android:id="@+id/btnAdd200"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="+200ml 🥤\n(Cốc nhỏ)"
+            android:textColor="#0088CC"
+            android:textSize="13sp"
+            app:strokeColor="#0088CC"
+            app:strokeWidth="1.5dp"
+            app:cornerRadius="12dp"/>
+
+        <!-- Nút +500ml (Chai lớn) -->
+        <Button
+            android:id="@+id/btnAdd500"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="+500ml 🍾\n(Chai lớn)"
+            android:textColor="#0088CC"
+            android:textSize="13sp"
+            app:strokeColor="#0088CC"
+            app:strokeWidth="1.5dp"
+            app:cornerRadius="12dp"/>
+    </LinearLayout>
+
+    <!-- NÚT ĐẶT LẠI NGÀY MỚI -->
+    <TextView
+        android:id="@+id/tvResetDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Đặt lại ngày mới"
+        android:textColor="#D9534F"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>

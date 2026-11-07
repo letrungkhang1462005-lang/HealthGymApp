@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 1. Quyền truy cập Internet để gọi AI và tải bản đồ -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 2. Quyền cho tính năng theo dõi vận động (GPS + đếm bước chân) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- Máy không có GPS / cảm biến đếm bước / camera vẫn cài được app -->
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HealthGymApp"
+        tools:targetApi="31">
+
+        <!-- MÀN HÌNH MỞ ĐẦU (IntroActivity) -->
+        <activity
+            android:name=".ui.profile.dashboard.meal.IntroActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MÀN HÌNH CHÍNH (DashboardActivity) -->
+        <activity
+            android:name=".ui.profile.dashboard.meal.DashboardActivity"
+            android:exported="false" />
+
+        <!-- CÁC MÀN HÌNH KHÁC -->
+        <activity
+            android:name=".ui.profile.dashboard.meal.MealSuggestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.dashboard.meal.MealDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.dashboard.meal.HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.dashboard.meal.ProfileActivity"
+            android:exported="false" />
+        <activity android:name=".ui.profile.dashboard.meal.ExerciseListActivity" />
+        <activity
+            android:name=".ui.profile.dashboard.meal.WaterReminderActivity"
+            android:exported="false" />
+        <activity android:name=".ui.profile.dashboard.meal.BmiCalculatorActivity" android:exported="false" />
+        <activity android:name=".ui.profile.dashboard.meal.SettingsActivity" android:exported="false" />
+        <activity android:name=".ui.profile.dashboard.meal.HeartRateDetailActivity" android:exported="false" />
+        <activity android:name=".ui.profile.dashboard.meal.ActivityListActivity" />
+        <activity android:name=".ui.profile.dashboard.meal.MealListActivity" />
+
+        <!-- Khai báo AI Coach Activity (adjustResize để bàn phím không che ô nhập) -->
+        <activity
+            android:name=".ui.profile.dashboard.meal.AiCoachActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Theo dõi vận động: bản đồ + GPS + đếm bước (khóa dọc để không mất phiên khi xoay màn hình) -->
+        <activity
+            android:name=".ui.profile.dashboard.meal.TrackingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Cho phép ứng dụng camera ghi ảnh vào thư mục cache của app (chụp ảnh món ăn ở AI Coach) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
